@@ -9,8 +9,10 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
-    "@matterlabs/hardhat-zksync-deploy": "^0.6.1",
+    "@matterlabs/hardhat-zksync-chai-matchers": "0.1.1",
+    "@matterlabs/hardhat-zksync-deploy": "0.6.2",
     "@matterlabs/hardhat-zksync-solc": "^0.3.14",
+    "@matterlabs/hardhat-zksync-verify": "0.1.2",
     "@matterlabs/zksync-contracts": "^0.5.2",
     "@openzeppelin/contracts": "^4.7.3",
     "@openzeppelin/contracts-upgradeable": "^4.7.3",
