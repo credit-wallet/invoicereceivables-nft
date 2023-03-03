@@ -14,6 +14,9 @@ import "@matterlabs/zksync-contracts/l2/system-contracts/Constants.sol";
 // to call non-view method of system contracts
 import "@matterlabs/zksync-contracts/l2/system-contracts/libraries/SystemContractsCaller.sol";
 
+//Huma credit pool interface
+import "../interface/ICredit.sol";
+
 contract TwoUserMultisig is IAccount, IERC1271 {
     // to get transaction hash
     using TransactionHelper for Transaction;
@@ -21,6 +24,7 @@ contract TwoUserMultisig is IAccount, IERC1271 {
     // state variables for account owners
     address public owner1;
     address public owner2;
+    address public humaPool;
 
     bytes4 constant EIP1271_SUCCESS_RETURN_VALUE = 0x1626ba7e;
 
@@ -36,6 +40,12 @@ contract TwoUserMultisig is IAccount, IERC1271 {
     constructor(address _owner1, address _owner2) {
         owner1 = _owner1;
         owner2 = _owner2;
+    }
+
+    function requestBorrow(uint256 amount)internal{
+        //TODO: add receiver later
+        ICredit creditPool = ICredit(humaPool);
+        creditPool.drawdown(amount);
     }
 
     function validateTransaction(
